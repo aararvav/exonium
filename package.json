@@ -1,0 +1,28 @@
+{
+  "name": "exonium",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.28",
+    "next": "^14.2.31",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwind-merge": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "@types/react": "19.1.10",
+    "eslint-config-next": "14.2.1",
+    "postcss": "^8",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.1"
+  }
+}
