@@ -21,7 +21,7 @@ const Hero = () => {
     >
       <div className="container-lg flex flex-col items-center pt-28 text-center lg:pt-24">
         
-        {/* Top badge */}
+        {/* Top badge
         <motion.button
           initial="initial"
           animate="animate"
@@ -34,7 +34,7 @@ const Hero = () => {
           className="flex h-7 items-center gap-2 rounded-full border border-white/5 bg-white/10 px-3 text-xs font-medium leading-7 backdrop-blur-md hover:bg-white/20 transition"
         >
           Exonium Mobile v0.1 <ChevronRight />
-        </motion.button>
+        </motion.button> */}
 
         {/* Heading with gradient */}
         <motion.h1
