@@ -5,7 +5,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Exonium",
-  // Add description if needed, e.g. description: "Your site description"
+  icons: {
+    icon: "/logo-assets/logo-light.png",
+    shortcut: "/logo-assets/logo-light.png",
+    apple: "/logo-assets/logo-light.png",
+  },
 };
 
 export default function RootLayout({
