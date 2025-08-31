@@ -21,7 +21,7 @@ const DashboardMock = () => {
                     : {}
             }
             transition={{ duration: 1.4, delay: 0 }}
-            className={`relative max-w-5xl my-24 lg:my-32 aspect-video w-full [animation-delay:1000ms] overflow-hidden rounded-2xl ${
+            className={`relative max-w-5xl my-24 lg:my-10 aspect-video w-full [animation-delay:1000ms] overflow-hidden rounded-2xl ${
                 isDashboardInView ? "animate-cardTransform" : ""
             }`}
             style={{ transform: "perspective(2000px) rotateX(25deg)" }}
