@@ -80,8 +80,8 @@ const DashboardMock = () => {
                             ? { opacity: 1, transition: { delay: 2, duration: 0.8 } }
                             : {}
                     }
-                    src="https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/8ab5dc31-5b91-4a8e-477c-afeb53cdd700/f=auto,q=95,fit=scale-down,metadata=none"
-                    alt=""
+                    src="/logo-assets/dashboard.png"
+                    alt="Dashboard preview"
                     className="relative z-10 rounded-2xl"
                 />
             </div>
