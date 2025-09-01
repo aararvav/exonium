@@ -76,7 +76,7 @@ const Section5 = () => {
         </div>
 
         <h3 className="mx-auto mt-16 max-w-xs text-center text-2xl leading-[1.3] lg:mt-0 lg:max-w-[43rem] lg:text-[32px]">
-          From customer support integrations to powerful Git automations, Linear
+          From customer support integrations to powerful Git automations, Exonium
           streamlines the entire product development process.
         </h3>
         <div className="flex justify-center pt-10">
