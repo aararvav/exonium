@@ -84,7 +84,7 @@ const Hero = () => {
               duration: 0.5,
               type: "spring",
               ease: "easeOut",
-              delay: 0.22,
+              delay: 2.5,
             }}
             className="flex h-12 items-center gap-2 rounded-full bg-[#5e6ad2] px-6 text-white font-medium leading-[48px] hover:bg-[#6f7ff0] transition shadow-lg cursor-pointer"
             role="button"
