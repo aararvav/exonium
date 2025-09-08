@@ -12,18 +12,17 @@ const DashboardMock = () => {
             animate={
                 isDashboardInView
                     ? {
-                            boxShadow: [
-                                "0px 1px 200px 100px rgba(99,102,241,0.1)",
-                                "0px 1px 200px 100px rgba(99,102,241,0.5)",
-                                "0px 1px 200px 100px rgba(99,102,241,0.2)",
-                            ],
-                        }
+                        boxShadow: [
+                            "0px 1px 200px 100px rgba(99,102,241,0.1)",
+                            "0px 1px 200px 100px rgba(99,102,241,0.5)",
+                            "0px 1px 200px 100px rgba(99,102,241,0.2)",
+                        ],
+                    }
                     : {}
             }
             transition={{ duration: 1.4, delay: 0 }}
-            className={`relative max-w-5xl my-24 lg:my-10 aspect-video w-full [animation-delay:1000ms] overflow-hidden rounded-2xl ${
-                isDashboardInView ? "animate-cardTransform" : ""
-            }`}
+            className={`relative max-w-5xl my-24 lg:my-10 aspect-video w-full [animation-delay:1000ms] overflow-hidden rounded-2xl ${isDashboardInView ? "animate-cardTransform" : ""
+                }`}
             style={{ transform: "perspective(2000px) rotateX(25deg)" }}
             ref={dashboardRef}
         >
@@ -52,10 +51,10 @@ const DashboardMock = () => {
                     animate={
                         isDashboardInView
                             ? {
-                                    left: ["0%", "100%"],
-                                    opacity: [1, 0],
-                                    transition: { duration: 2, repeat: Infinity, repeatDelay: 1 },
-                                }
+                                left: ["0%", "100%"],
+                                opacity: [1, 0],
+                                transition: { duration: 2, repeat: Infinity, repeatDelay: 1 },
+                            }
                             : {}
                     }
                     className="absolute w-20 h-[0.5px] bg-gradient-to-r from-transparent rounded-full to-indigo-500 top-0"
@@ -65,10 +64,10 @@ const DashboardMock = () => {
                     animate={
                         isDashboardInView
                             ? {
-                                    top: ["0%", "100%"],
-                                    opacity: [1, 0],
-                                    transition: { duration: 2, repeat: Infinity, repeatDelay: 1 },
-                                }
+                                top: ["0%", "100%"],
+                                opacity: [1, 0],
+                                transition: { duration: 2, repeat: Infinity, repeatDelay: 1 },
+                            }
                             : {}
                     }
                     className="absolute h-20 w-[0.5px] bg-gradient-to-b from-transparent rounded-full to-indigo-500 right-0 top-0 z-20"
