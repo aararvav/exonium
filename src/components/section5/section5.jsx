@@ -21,7 +21,7 @@ const Section5 = () => {
   return (
     <div className="overflow-hidden pb-52">
       <LampEffect color="#3E2476">
-        Exonium workflows <br /> Exponential results.
+        Exonium workflows. <br /> Exponential results.
       </LampEffect>
       <div className="container-lg -mt-10">
         <div className="relative z-10 flex h-36 w-full items-center justify-center pb-40">
