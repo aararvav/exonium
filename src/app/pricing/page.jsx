@@ -86,7 +86,7 @@ export default function PricingPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#070708] text-white">
+    <main className="min-h-screen bg-[#131822] text-white">
       <Nav />
       <div className="pt-20 pb-8 px-4">
         <motion.div
