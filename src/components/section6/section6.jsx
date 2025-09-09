@@ -22,10 +22,10 @@ const Section6 = () => {
         Available today.
       </h1>
       <div className="flex items-center justify-center gap-5">
-        <button className="flex h-12 items-center gap-2 rounded-full bg-[#5e6ad2] px-4 font-medium leading-[48px]">
+        <button className="border-2 border-blue-400 bg-[#003366] flex h-12 items-center gap-2 rounded-full px-4 font-medium leading-[48px] transition duration-700 hover:bg-transparent lg:flex">
           Sign up for free
         </button>
-        <button className="hidden h-12 items-center gap-2 rounded-full bg-[hsla(0,0%,100%,.07)] px-4 font-medium leading-[48px] hover:bg-[hsla(0,0%,100%,.15)] lg:flex">
+        <button className="border-2 border-blue-400 hidden h-12 items-center gap-2 rounded-full bg-[hsla(0,0%,100%,.07)] px-4 font-medium leading-[48px] transition duration-700 hover:bg-transparent lg:flex">
           <Window /> Download
         </button>
       </div>

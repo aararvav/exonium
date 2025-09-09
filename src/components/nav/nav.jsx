@@ -49,7 +49,7 @@ const Nav = () => {
                     </li>
                     <li className="text-sm me-5 lg:me-0">
                         <Link href="/signup" passHref legacyBehavior>
-                            <a className="bg-[#5e6ad2] rounded-full px-4 font-medium leading-8 h-8 text-white hover:bg-[#6f7ff0] transition flex items-center justify-center min-w-[80px] text-sm">
+                            <a className="border-2 border-blue-400 bg-[#003366] rounded-full px-4 font-medium leading-8 h-8 text-white hover:bg-transparent transition duration-700 flex items-center justify-center min-w-[80px] text-sm">
                                 Sign up
                             </a>
                         </Link>
