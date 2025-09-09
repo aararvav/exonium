@@ -15,13 +15,15 @@ const Nav = () => {
             <nav className="backdrop-blur-md py-3 bg-[hsla(0,0%,100%,.01)] fixed inset-0 border-b border-[hsla(0,0%,100%,.08)] z-50 h-fit">
                 <ul className="container-lg flex justify-between items-center">
                     <li className="flex gap-2 items-center">
-                        <Image
-                            src="/logo-assets/logo-light.png"
-                            alt="Logo Light"
-                            width={18}
-                            height={18}
-                        />
-                        <h1 className="font-medium">Exonium</h1>
+                        <Link href="/" className="flex gap-2 items-center cursor-pointer hover:opacity-80 transition-opacity">
+                            <Image
+                                src="/logo-assets/logo-light.png"
+                                alt="Logo Light"
+                                width={18}
+                                height={18}
+                            />
+                            <h1 className="font-medium">Exonium</h1>
+                        </Link>
                     </li>
                     <li className="text-sm cursor-pointer hidden lg:block">
                         <a href="/features">Features</a>
