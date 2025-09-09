@@ -86,7 +86,7 @@ const Hero = () => {
               ease: "easeOut",
               delay: 2.5,
             }}
-            className="flex h-12 items-center gap-2 rounded-full bg-[#5e6ad2] px-6 text-white font-medium leading-[48px] hover:bg-[#6f7ff0] transition shadow-lg cursor-pointer"
+            className="border-2 border-blue-400 bg-[#003366] flex h-12 items-center gap-2 rounded-full px-6 text-white font-medium leading-[48px] hover:bg-transparent transition duration-700 transition shadow-lg cursor-pointer"
             role="button"
             tabIndex={0}
           >
