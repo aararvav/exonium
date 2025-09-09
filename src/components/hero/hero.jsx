@@ -47,7 +47,7 @@ const Hero = () => {
             ease: "easeOut",
             delay: 0.08,
           }}
-          className="my-6 text-balance pb-0.5 text-[44px] font-medium leading-[1] -tracking-[0.01em] bg-clip-text text-transparent lg:text-[80px] lg:tracking-tight"
+          className="my-6 text-balance pb-1.5 text-[44px] font-medium leading-[1] -tracking-[0.01em] bg-clip-text text-transparent lg:text-[80px] lg:tracking-tight"
           style={{
             background:
               "linear-gradient(to right bottom, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0.38))",
