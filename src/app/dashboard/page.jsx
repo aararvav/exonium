@@ -1,6 +1,6 @@
 "use client";
 
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -83,7 +83,13 @@ export default function DashboardPage() {
       {/* Sidebar */}
       <aside className="w-64 bg-[#10101a] border-r border-[#181828] flex flex-col min-h-screen">
         <div className="flex items-center gap-2 px-4 py-3 border-b border-[#181828]">
-          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-700 flex items-center justify-center text-lg">🟣</div>
+          <Image
+            src="/logo-assets/logo-light.png"
+            alt="Exonium Logo"
+            width={24}
+            height={24}
+            className="w-6 h-6"
+          />
           <span className="font-bold text-lg tracking-tight">Exonium</span>
         </div>
         <button className="mx-4 mt-4 mb-2 bg-[#23233a] hover:bg-[#2d2d4d] text-white font-medium py-2 px-4 rounded text-left">New issue</button>
@@ -169,7 +175,13 @@ export default function DashboardPage() {
         <aside className="w-[340px] bg-[#10101a] border-l border-[#181828] p-6 flex flex-col gap-6 min-h-screen">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-700 flex items-center justify-center text-lg">🟣</span>
+              <Image
+                src="/logo-assets/logo-light.png"
+                alt="Unicore Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
               <span className="font-bold text-lg">Unicore</span>
             </div>
             <p className="text-[#b4bcd0] text-xs mb-2">Escape from the game grid and reach the MCP</p>
