@@ -1,17 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = "/dashboard"; // Always redirect to dashboard
 
-  const handleEmailLogin = (e) => {
+  const handleEmailLogin = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login form submitted");
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    
+    try {
+      setError(""); // Clear any previous errors
+      console.log("Attempting login with:", { email });
+
+      const response = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      console.log("Login response:", response);
+
+      if (response?.error) {
+        setError("Invalid email or password");
+        return;
+      }
+
+      if (!response?.ok) {
+        setError("Failed to sign in");
+        return;
+      }
+
+      // Successful login
+      console.log("Login successful, redirecting to:", callbackUrl);
+      router.push(callbackUrl);
+      router.refresh();
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("An unexpected error occurred");
+    }
   };
 
   return (
@@ -51,9 +89,15 @@ export default function LoginPage() {
           </div>
         ) : (
           <form onSubmit={handleEmailLogin} className="w-full flex flex-col items-center gap-4 mt-2 mb-6">
+            {error && (
+              <div className="w-full max-w-[360px] text-red-500 text-sm text-center">
+                {error}
+              </div>
+            )}
             <div className="w-full max-w-[360px]">
               <input
                 type="email"
+                name="email"
                 placeholder="Email address"
                 required
                 className="w-full rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
@@ -62,6 +106,7 @@ export default function LoginPage() {
             <div className="w-full max-w-[360px]">
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 required
                 className="w-full rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
