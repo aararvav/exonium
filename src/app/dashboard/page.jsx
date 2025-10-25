@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -82,7 +83,7 @@ export default function DashboardPage() {
     >
       {/* Sidebar */}
       <aside className="w-64 bg-[#10101a] border-r border-[#181828] flex flex-col min-h-screen">
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-[#181828]">
+        <Link href="/" className="flex items-center gap-2 px-4 py-3 border-b border-[#181828] hover:bg-[#181828] transition-colors">
           <Image
             src="/logo-assets/logo-light.png"
             alt="Exonium Logo"
@@ -91,7 +92,7 @@ export default function DashboardPage() {
             className="w-6 h-6"
           />
           <span className="font-bold text-lg tracking-tight">Exonium</span>
-        </div>
+        </Link>
         <button className="mx-4 mt-4 mb-2 bg-[#23233a] hover:bg-[#2d2d4d] text-white font-medium py-2 px-4 rounded text-left">New issue</button>
         <nav className="flex flex-col gap-1 px-2 mt-2">
           {sidebar.nav.map((item) => (

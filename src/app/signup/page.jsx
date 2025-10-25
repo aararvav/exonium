@@ -5,14 +5,62 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  const handleEmailSignup = (e) => {
+  const handleEmailSignup = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log("Signup form submitted");
+    const formData = new FormData(e.currentTarget);
+    
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+    
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+    
+    try {
+      setError(""); // Clear any previous errors
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          password: formData.get("password"),
+        }),
+      });
+
+      if (res.ok) {
+        // Log the user in after successful signup
+        await signIn("credentials", {
+          email: formData.get("email"),
+          password: formData.get("password"),
+          redirect: false,
+        });
+        
+        router.push("/dashboard");
+        router.refresh();
+      } else {
+        const data = await res.json();
+        setError(data.error || "Something went wrong");
+      }
+    } catch (error) {
+      setError("Something went wrong");
+    }
   };
 
   return (
@@ -52,23 +100,19 @@ export default function SignupPage() {
           </div>
         ) : (
           <form onSubmit={handleEmailSignup} className="w-full flex flex-col items-center gap-4 mt-2 mb-6">
-            <div className="w-full max-w-[300px] flex gap-3 justify-center">
+            <div className="w-full max-w-[400px]">
               <input
                 type="text"
-                placeholder="First name"
+                name="name"
+                placeholder="Full name"
                 required
-                className="w-[195px] flex-1 rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
-              />
-              <input
-                type="text"
-                placeholder="Last name"
-                required
-                className="w-[195px] flex-1 rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
+                className="w-full rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
               />
             </div>
             <div className="w-full max-w-[400px]">
               <input
                 type="email"
+                name="email"
                 placeholder="Email address"
                 required
                 className="w-full rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
@@ -77,6 +121,7 @@ export default function SignupPage() {
             <div className="w-full max-w-[400px]">
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 required
                 className="w-full rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
@@ -85,11 +130,17 @@ export default function SignupPage() {
             <div className="w-full max-w-[400px]">
               <input
                 type="password"
+                name="confirmPassword"
                 placeholder="Confirm password"
                 required
                 className="w-full rounded-md bg-[#181a20] text-[#e6e8ee] py-3 px-4 border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition duration-150 ease-in-out hover:border-[rgba(255,255,255,0.14)] focus:border-[#5e6ad2] focus:outline-none focus:ring-2 focus:ring-[#6f79e6]/40 placeholder-[#b4bcd0]"
               />
             </div>
+            {error && (
+              <div className="w-full max-w-[400px] text-red-500 text-sm text-center">
+                {error}
+              </div>
+            )}
             <button
               type="submit"
               className="w-[400px] max-w-full rounded-md bg-[#5e6ad2] text-white py-3 font-medium transition duration-150 ease-in-out hover:brightness-105 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6f79e6]/40 shadow-sm"
