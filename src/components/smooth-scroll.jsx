@@ -1,19 +1,34 @@
 "use client";
 
 import Lenis from "@studio-freight/lenis";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const SmoothScroll = ({ children }) => {
-  useEffect(() => {
-    const lenis = new Lenis();
+  const rafRef = useRef();
 
-    function raf( time) {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
+
+    function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafRef.current = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafRef.current = requestAnimationFrame(raf);
+
+    // Cleanup function
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+      lenis.destroy();
+    };
   }, []);
+
   return <>{children}</>;
 };
 
